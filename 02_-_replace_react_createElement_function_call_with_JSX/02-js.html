@@ -1,0 +1,25 @@
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+
+  const rootElement = document.getElementById("root");
+  // Opción 1:
+  // const content = "Hello World";
+  // const myClassName = "container";
+  // const element = <div className={myClassName}>{content}</div>
+
+  //Opción 2:
+  const props = {
+    className: "container",
+    children: "Hello World"
+  }
+
+  const element = <div {...props} />;
+
+  console.log(element);
+  ReactDOM.render(element, rootElement);
+
+</script>
