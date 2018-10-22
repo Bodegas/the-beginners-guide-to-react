@@ -6,7 +6,15 @@
 <script type="text/babel">
 
   const rootElement = document.getElementById("root");
+  // O que queremos sustituir:
+  const element = React.createElement("div", }
+    className: "container",
+    children: "Hello world"
+  })
+
   // Opción 1:
+  // Para que esta opción funcione necesitamos Babel porque estamos usando JSX.
+  // JSX transpila JSX en javascript
   // const content = "Hello World";
   // const myClassName = "container";
   // const element = <div className={myClassName}>{content}</div>
