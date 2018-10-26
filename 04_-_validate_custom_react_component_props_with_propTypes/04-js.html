@@ -1,0 +1,92 @@
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+
+  const rootElement = document.getElementById("root");
+  
+
+  // Para Opción 1 e 2
+  // function SayHello(props) {
+  //   return (
+  //     <div>
+  //       Hello {props.firstName} {props.lastName}
+  //     </div>
+  //   )
+  // }
+
+  // Opción 1
+  // SayHello.propTypes = {
+  //   firstName(props, propName, componentName) {
+  //     if (typeof props[propName] !== "string") {
+  //       return new Error(`Hey, you should pass a string for ${propName} in ${componentName} but you passed a ${typeof props[propName]}`)
+  //     }
+  //   }
+  // }
+
+
+  // Opción 2
+  // const PropTypes = {
+  //   string(props, propName, componentName) {
+  //     if (typeof props[propName] !== "string") {
+  //       return new Error(`Hey, you should pass a string for ${propName} in ${componentName} but you passed a ${typeof props[propName]}`)
+  //     }
+  //   }
+  // }
+
+  // SayHello.propTypes = {
+  //   firstName: PropTypes.string,
+  //   lastName: PropTypes.string 
+  // }
+
+
+  // Opción 3
+  // Con CDN de prop-types
+  // Curioso: neste caso metemos un valor por defecto en lastName pero o isRequired segue marcando
+  // como erro porque non detecta ese valor por defecto, só que non se lle está pasando nada na 
+  // propiedade lastName
+  // function SayHello(props) {
+  //   return (
+  //     <div>
+  //       Hello {props.firstName} {props.lastName || "Unknown"}
+  //     </div>
+  //   )
+  // }
+  
+  // SayHello.propTypes = {
+  //   firstName: PropTypes.string.isRequired,
+  //   lastName: PropTypes.string.isRequired
+  // }
+
+
+  // Opción 4
+  // Clase (compoñente de React) en vez de función
+  // Métese o propTypes como unha propiedade estática
+  class SayHello extends React.Component {
+    static propTypes = {
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired
+    }
+    render() {
+      const {firstName, lastName} = this.props;
+      return (
+        <div>
+          Hello {firstName} {lastName}
+        </div>
+      )
+    }
+  }
+
+  // Nota final
+  // Se usamos o CDN de producción: react.production.min.js e react-dom.production.min.js desaparecen
+  // as mensaxes de erro de PropTypes porque en producción quítanse todos eses logs 
+
+
+  const element = (<SayHello firstName={true} />)  
+
+  ReactDOM.render(element, rootElement);
+
+</script>
