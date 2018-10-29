@@ -1,0 +1,59 @@
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+
+  const rootElement = document.getElementById("root");
+
+  // Opción 1  
+  // function Message({message}) {
+  //   return <div>{message}</div>
+  // }
+
+  // const element = <Message message="Hello world" />
+
+
+  // Opción 2
+  // function Message({message}) {
+  //   if (!message) {
+  //     return React.createElement("div", null, "No message")
+  //   }
+  //   return React.createElement("div", null, message)
+  // }
+
+  // const element = <Message message={null} />
+
+
+  // Opción 3
+  // function Message({message}) {
+  //   return (
+  //     <div>
+  //       {
+  //         message
+  //         ? React.createElement("div", null, message)
+  //         : React.createElement("div", null, "No message")
+  //       }
+  //     </div>
+  //   )
+  // }
+
+
+  // Opción 4
+  function Message({message}) {
+    return (
+      <div>
+        {
+          message
+          ? <div>{message}</div>
+          : <div>No message</div>
+        }
+      </div>
+    )
+  }
+
+  const element = <Message message={"Hi!"} />
+
+  ReactDOM.render(element, rootElement);
+</script>
